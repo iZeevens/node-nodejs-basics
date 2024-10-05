@@ -1,8 +1,8 @@
 import fs from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
+import { getDirname } from './pathHelper.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = getDirname(import.meta.url);
 
 const create = async () => {
   const content = "I am fresh and young";

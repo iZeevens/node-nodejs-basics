@@ -1,9 +1,8 @@
 import fs from "fs";
+import { join } from "path";
+import { getDirname } from "./pathHelper.js";
 
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = getDirname(import.meta.url);
 
 const copy = async () => {
   const filesPath = join(__dirname, "files");
