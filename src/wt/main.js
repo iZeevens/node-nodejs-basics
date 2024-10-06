@@ -15,7 +15,7 @@ const performCalculations = async () => {
     const data = 10 + i;
 
     const promise = new Promise((resolve, reject) => {
-      const worker = new Worker(workerPath, { workerData: data === 11 ? 'wrong_data' : data });
+      const worker = new Worker(workerPath, { workerData: data });
       worker.on("message", resolve);
       worker.on("error", reject);
       worker.on("exit", (code) => {
