@@ -9,7 +9,13 @@ const read = async () => {
   const pathFileToRead = join(__dirname, "files", "fileToRead.txt");
 
   const input = fs.createReadStream(pathFileToRead, { encoding: "utf-8" });
-  input.pipe(stdout);
+
+  return new Promise((resolve, reject) => {
+    input.pipe(stdout);
+
+    input.on('end', resolve);
+    input.on('error', reject);
+  })
 };
 
 await read();
