@@ -8,13 +8,13 @@ import { join } from "node:path";
 const __dirname = getDirname(import.meta.url);
 
 const compress = async () => {
-  const pathFileToCompress = join(__dirname, "files", "fileToCompress.txt");
-  const pathFileToCompressed = join(__dirname, "files", "archive.gz");
+  const sourceFilePath  = join(__dirname, "files", "fileToCompress.txt");
+  const destinationFilePath = join(__dirname, "files", "archive.gz");
 
   const gzip = createGzip();
-  const source = createReadStream(pathFileToCompress);
-  const destnation = createWriteStream(pathFileToCompressed);
-  pipeline(source, gzip, destnation, (err) => {
+  const source = createReadStream(sourceFilePath);
+  const destination = createWriteStream(destinationFilePath);
+  pipeline(source, gzip, destination, (err) => {
     if (err) {
       throw new Error(err);
     }
