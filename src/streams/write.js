@@ -16,7 +16,7 @@ const write = async () => {
 
   return new Promise((resolve, reject) => {
     stdin.pipe(output);
-    output.on('end', resolve);
+    output.on('finish', resolve);
     output.on('error', reject);
   })
 };
